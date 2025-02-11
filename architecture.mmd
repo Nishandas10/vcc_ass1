@@ -1,0 +1,35 @@
+graph TD
+    subgraph "Client Layer"
+        A[Browser/Client] -->|HTTP Requests| B[Client Server<br/>Port 8080]
+        B -->|Static Files| A
+    end
+
+    subgraph "Server Layer"
+        C[Backend Server<br/>Port 3000<br/>192.168.56.5]
+    end
+
+    B -->|GET /products| C
+    C -->|JSON Response| B
+    B -->|JSON Response| A
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bfb,stroke:#333,stroke-width:2px
+
+    classDef server fill:#f96,stroke:#333,stroke-width:2px
+    class B,C server
+
+    %% Technology Stack
+    subgraph "Technology Stack"
+        D[Express.js]
+        E[Axios]
+        F[CORS]
+        G[Static Files]
+    end
+
+    %% Features
+    subgraph "Features"
+        H[REST API]
+        I[Error Handling]
+        J[Proxy/Middleware]
+    end 
